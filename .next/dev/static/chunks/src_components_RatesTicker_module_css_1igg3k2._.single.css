@@ -1,0 +1,111 @@
+/* [project]/src/components/RatesTicker.module.css [app-client] (css) */
+.RatesTicker-module__jTjADG__tickerSection {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-gold-subtle);
+  background: #0e1117b3;
+  padding: 24px 0;
+}
+
+.RatesTicker-module__jTjADG__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.RatesTicker-module__jTjADG__header {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.RatesTicker-module__jTjADG__liveTag {
+  letter-spacing: .12em;
+  color: var(--gold-400);
+  align-items: center;
+  gap: 8px;
+  font-size: .74rem;
+  font-weight: 700;
+  display: inline-flex;
+}
+
+.RatesTicker-module__jTjADG__pulseDot {
+  background: #22c55e;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  animation: 2s ease-in-out infinite RatesTicker-module__jTjADG__pulseSubtle;
+  box-shadow: 0 0 10px #22c55e;
+}
+
+.RatesTicker-module__jTjADG__subtext {
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.RatesTicker-module__jTjADG__ratesGrid {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  display: grid;
+}
+
+.RatesTicker-module__jTjADG__rateCard {
+  border: 1px solid var(--border-subtle);
+  background: #12161e99;
+  border-radius: 8px;
+  padding: 12px 14px;
+  transition: all .2s;
+}
+
+.RatesTicker-module__jTjADG__rateCard:hover {
+  border-color: var(--border-gold-subtle);
+  background: #191e2acc;
+  transform: translateY(-2px);
+}
+
+.RatesTicker-module__jTjADG__rateMeta {
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+  display: flex;
+}
+
+.RatesTicker-module__jTjADG__metalName {
+  color: var(--text-main);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: .8rem;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.RatesTicker-module__jTjADG__purityBadge {
+  color: var(--gold-400);
+  background: #d4af371f;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: .68rem;
+}
+
+.RatesTicker-module__jTjADG__priceRow {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.RatesTicker-module__jTjADG__priceValue {
+  font-family: var(--font-serif-family);
+  color: var(--gold-300);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.RatesTicker-module__jTjADG__changeBadge {
+  color: #4ade80;
+  font-size: .72rem;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=src_components_RatesTicker_module_css_1igg3k2._.single.css.map*/

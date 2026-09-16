@@ -1,0 +1,168 @@
+.footer {
+  background: #090b0f;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 80px 0 36px;
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.topRow {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 0.8fr 1.2fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.logoGroup:hover {
+  opacity: 0.9;
+}
+
+.brandLogoImg {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+}
+
+.brandDesc {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.linksCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.colHeading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.linksList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linksList a {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  transition: color 0.2s;
+}
+
+.linksList a:hover {
+  color: #ffffff;
+}
+
+.newsletterText {
+  font-size: 0.86rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.emailInput {
+  flex: 1;
+  background: #141822;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.emailInput:focus {
+  border-color: var(--gold-500);
+}
+
+.subscribeBtn {
+  background: #ffffff;
+  color: #090b0f;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.subscribeBtn:hover {
+  background: var(--gold-500);
+  color: #07080a;
+}
+
+.bottomRow {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.legalGroup {
+  display: flex;
+  gap: 20px;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.legalGroup span {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.legalGroup span:hover {
+  color: #cbd5e1;
+}
+
+@media (max-width: 960px) {
+  .topRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .topRow {
+    grid-template-columns: 1fr;
+  }
+  .bottomRow {
+    flex-direction: column;
+    text-align: center;
+  }
+}

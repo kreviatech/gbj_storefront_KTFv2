@@ -1,0 +1,129 @@
+.section {
+  background: #ffffff;
+  padding: 80px 0 100px;
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.bannerCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+}
+
+.leftCol {
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-family: var(--font-serif-family);
+  font-size: 3rem;
+  line-height: 1.15;
+  color: #0f172a;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.exploreBtn {
+  display: inline-block;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 14px 34px;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-top: 4px;
+}
+
+.exploreBtn:hover {
+  background: var(--gold-500);
+  color: #07080a;
+}
+
+.reviewsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.stars {
+  color: #f59e0b;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+}
+
+.reviewCount {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.rightCol {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.watchImageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 380px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bannerDialImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  border-radius: 20px 0 0 20px;
+  transition: transform 0.5s ease;
+}
+
+.bannerCard:hover .bannerDialImg {
+  transform: scale(1.04);
+}
+
+@media (max-width: 960px) {
+  .bannerCard {
+    grid-template-columns: 1fr;
+  }
+  .leftCol {
+    padding: 40px 30px;
+    text-align: center;
+    align-items: center;
+  }
+  .watchImageWrapper {
+    max-width: 100%;
+    height: 300px;
+    justify-content: center;
+  }
+  .bannerDialImg {
+    border-radius: 0;
+  }
+}

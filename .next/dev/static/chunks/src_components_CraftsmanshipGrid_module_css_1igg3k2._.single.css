@@ -1,0 +1,143 @@
+/* [project]/src/components/CraftsmanshipGrid.module.css [app-client] (css) */
+.CraftsmanshipGrid-module__qop6EG__section {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 80px 0 100px;
+}
+
+.CraftsmanshipGrid-module__qop6EG__container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.CraftsmanshipGrid-module__qop6EG__topRow {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 60px;
+  display: flex;
+}
+
+.CraftsmanshipGrid-module__qop6EG__mainTitle {
+  font-family: var(--font-serif-family);
+  color: #0f172a;
+  letter-spacing: -.02em;
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.CraftsmanshipGrid-module__qop6EG__shopBtn {
+  color: #fff;
+  background: #0f172a;
+  border-radius: 100px;
+  padding: 12px 32px;
+  font-size: .92rem;
+  font-weight: 600;
+  transition: all .2s;
+  display: inline-block;
+}
+
+.CraftsmanshipGrid-module__qop6EG__shopBtn:hover {
+  background: var(--gold-500);
+  color: #07080a;
+}
+
+.CraftsmanshipGrid-module__qop6EG__grid {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  display: grid;
+  overflow: hidden;
+}
+
+.CraftsmanshipGrid-module__qop6EG__sideCol {
+  flex-direction: column;
+  display: flex;
+}
+
+.CraftsmanshipGrid-module__qop6EG__sideCol:first-child .CraftsmanshipGrid-module__qop6EG__featureCard:first-child, .CraftsmanshipGrid-module__qop6EG__sideCol:last-child .CraftsmanshipGrid-module__qop6EG__featureCard:first-child {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.CraftsmanshipGrid-module__qop6EG__featureCard {
+  background: #fff;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  min-height: 230px;
+  padding: 48px 40px;
+  transition: background .2s;
+  display: flex;
+}
+
+.CraftsmanshipGrid-module__qop6EG__featureCard:hover {
+  background: #fafaf9;
+}
+
+.CraftsmanshipGrid-module__qop6EG__number {
+  color: #94a3b8;
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.CraftsmanshipGrid-module__qop6EG__featureTitle {
+  font-family: var(--font-serif-family);
+  color: #0f172a;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.CraftsmanshipGrid-module__qop6EG__featureDesc {
+  color: #64748b;
+  font-size: .88rem;
+  line-height: 1.6;
+}
+
+.CraftsmanshipGrid-module__qop6EG__centerCol {
+  background: #fff;
+  border-left: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 30px 20px;
+  display: flex;
+}
+
+.CraftsmanshipGrid-module__qop6EG__watchWrapper {
+  justify-content: center;
+  align-items: center;
+  max-width: 320px;
+  transition: transform .4s;
+  display: flex;
+}
+
+.CraftsmanshipGrid-module__qop6EG__watchWrapper:hover {
+  transform: scale(1.04);
+}
+
+.CraftsmanshipGrid-module__qop6EG__centerpieceImg {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .CraftsmanshipGrid-module__qop6EG__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .CraftsmanshipGrid-module__qop6EG__centerCol {
+    border: 1px solid #e2e8f0;
+    border-left: none;
+    border-right: none;
+    padding: 40px;
+  }
+}
+
+/*# sourceMappingURL=src_components_CraftsmanshipGrid_module_css_1igg3k2._.single.css.map*/

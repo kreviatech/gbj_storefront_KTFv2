@@ -1,0 +1,558 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* 1. Top Announcement Bar */
+.announcementBar {
+  background: #111111;
+  color: #c5a059;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.announcementText {
+  display: inline-block;
+}
+
+/* 2. Main Navigation Bar */
+.mainNavRow {
+  background: #ffffff;
+  border-bottom: 1px solid #f1ece4;
+}
+
+/* Desktop layout: logo left, menu center, actions right */
+.navContainer {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Desktop Brand Logo */
+.desktopLogo {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.desktopLogo:hover {
+  opacity: 0.9;
+}
+
+.brandLogoImg {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Desktop Center Navigation Menu */
+.desktopNavMenu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navLink {
+  font-size: 0.92rem;
+  color: #475569;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: #0f172a;
+}
+
+.activeLink {
+  color: #0f172a !important;
+  font-weight: 600;
+}
+
+.arrowDown {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Desktop Right Actions */
+.desktopRightActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.sellBtn {
+  background: #111111;
+  border: 1px solid #111111;
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sellBtn:hover {
+  background: #b8860b;
+  border-color: #b8860b;
+}
+
+/* =======================================================
+   MOBILE-ONLY ELEMENTS (Hidden on desktop, shown <= 900px)
+   ======================================================= */
+.mobileLeftActions {
+  display: none;
+}
+
+.mobileCenterLogo {
+  display: none;
+}
+
+.mobileRightActions {
+  display: none;
+}
+
+/* Mobile Framed Logo Box matching user screenshot */
+.logoFrame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  border: 1.5px solid #c5a059;
+  border-radius: 2px;
+  padding: 3px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.brandLogoImgMobile {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Common Icon Buttons */
+.iconButton {
+  background: transparent;
+  border: none;
+  color: #1a1612;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  outline: none;
+}
+
+.iconButton:hover {
+  color: #c5a059;
+}
+
+/* Cart Button with Circle Badge */
+.cartButton {
+  position: relative;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 3. Luxury Horizontal Category Sub-Menu Bar */
+.subMenuBar {
+  background: #faf8f5;
+  border-bottom: 1px solid #e7dfd5;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.subMenuBar::-webkit-scrollbar {
+  display: none;
+}
+
+.subMenuContainer {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 42px;
+  white-space: nowrap;
+}
+
+.subMenuItem {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #57534e;
+  text-decoration: none;
+  padding: 10px 4px;
+  position: relative;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.01em;
+}
+
+.subMenuItem:hover {
+  color: #b8860b;
+}
+
+.activeSubItem {
+  color: #1a1612 !important;
+  font-weight: 600;
+}
+
+.activeSubItem::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: #c5a059;
+  border-radius: 2px;
+}
+
+.specialSubItem {
+  color: #854d0e;
+  font-weight: 600;
+  background: rgba(197, 160, 89, 0.12);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  transition: all 0.2s ease;
+}
+
+.specialSubItem:hover {
+  background: rgba(197, 160, 89, 0.22);
+  color: #713f12;
+  border-color: #b8860b;
+}
+
+.goldDot {
+  font-size: 0.78rem;
+}
+
+/* Dropdown search bar */
+.searchBarDropdown {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 10px 32px 14px;
+  display: flex;
+  gap: 12px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  animation: fadeIn 0.2s ease;
+}
+
+.searchInput {
+  flex: 1;
+  background: #faf8f5;
+  border: 1px solid #cbd5e1;
+  padding: 10px 16px;
+  border-radius: 6px;
+  color: #1a1612;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: #c5a059;
+}
+
+.searchSubmit {
+  background: #111111;
+  color: #c5a059;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Account Dropdown */
+.accountDropdown {
+  position: absolute;
+  top: 100%;
+  right: 32px;
+  width: 280px;
+  background: #ffffff;
+  border: 1px solid #e7dfd5;
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  padding: 16px;
+  z-index: 150;
+  animation: fadeIn 0.2s ease;
+}
+
+.accountHeader {
+  border-bottom: 1px solid #f1ece4;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.accountHeader strong {
+  font-size: 0.92rem;
+  color: #1a1612;
+}
+
+.accountHeader span {
+  font-size: 0.78rem;
+  color: #78716c;
+}
+
+.accountLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.accountLinkItem {
+  font-size: 0.85rem;
+  color: #44403c;
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.accountLinkItem:hover {
+  color: #c5a059;
+}
+
+.accountSignInBtn {
+  background: #111111;
+  color: #ffffff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.accountSignInBtn:hover {
+  background: #c5a059;
+}
+
+/* Slide-out Hamburger Menu Drawer */
+.drawerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  animation: fadeIn 0.25s ease;
+}
+
+.drawerContent {
+  width: 320px;
+  max-width: 85vw;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid #f1ece4;
+}
+
+.drawerLogoBox {
+  background: #000000;
+  border: 1px solid #c5a059;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.drawerCloseBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: #57534e;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.drawerCategoryLabel {
+  padding: 16px 20px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a8a29e;
+}
+
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+  flex: 1;
+}
+
+.drawerLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 12px;
+  color: #292524;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.drawerLink:hover {
+  background: #faf8f5;
+  color: #c5a059;
+}
+
+.drawerActiveLink {
+  background: #faf8f5;
+  color: #c5a059 !important;
+  font-weight: 600;
+}
+
+.drawerSpecialLink {
+  color: #92400e;
+  font-weight: 600;
+  background: rgba(197, 160, 89, 0.12);
+  margin-top: 6px;
+}
+
+.drawerArrow {
+  font-size: 0.85rem;
+  opacity: 0.4;
+}
+
+.drawerFooter {
+  padding: 20px;
+  border-top: 1px solid #f1ece4;
+  background: #faf8f5;
+}
+
+.drawerGuarantee {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #78716c;
+  margin-bottom: 14px;
+}
+
+.drawerCallBtn {
+  display: block;
+  background: #111111;
+  color: #c5a059;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* =====================================================
+   RESPONSIVE SWITCH: MOBILE EXACT MATCH TO MOCKUP (<= 900px)
+   ===================================================== */
+@media (max-width: 900px) {
+  /* Hide Desktop-only elements */
+  .desktopLogo,
+  .desktopNavMenu,
+  .desktopRightActions {
+    display: none !important;
+  }
+
+  /* Hide Sub-Navigation Bar on mobile as all categories are in the slide-out menu */
+  .subMenuBar {
+    display: none !important;
+  }
+
+  /* Show Mobile-only elements */
+  .mobileLeftActions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: flex-start;
+  }
+
+  .mobileCenterLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobileRightActions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: flex-end;
+  }
+
+  /* 3-Column Grid matching screenshot */
+  .navContainer {
+    padding: 8px 16px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+}

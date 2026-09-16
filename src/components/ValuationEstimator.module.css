@@ -1,0 +1,354 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: var(--text-main);
+  margin-top: 14px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.subtitle strong {
+  color: var(--gold-300);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: var(--shadow-card), 0 0 30px rgba(212, 175, 55, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold-metallic);
+}
+
+.calculatorSection {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+}
+
+.metalTabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.metalTab {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--text-soft);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.metalTab:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: var(--border-gold-subtle);
+}
+
+.activeTab {
+  background: rgba(212, 175, 55, 0.16) !important;
+  border-color: var(--gold-500) !important;
+  color: var(--gold-300) !important;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
+}
+
+.selectInput {
+  background: #141822;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 13px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.selectInput:focus {
+  border-color: var(--gold-500);
+}
+
+.weightLabelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weightValueBadge {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-300);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-gold-subtle);
+}
+
+.sliderInput {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #1e2430;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.sliderInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: var(--gold-metallic);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+  border: 2px solid #07080a;
+}
+
+.sliderHints {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Result Section */
+.resultSection {
+  background: #121620;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.estimateBox {
+  text-align: center;
+  padding: 20px 16px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 10px;
+}
+
+.estimateLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold-300);
+  font-weight: 600;
+}
+
+.estimateAmount {
+  font-family: var(--font-serif-family);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold-200);
+  margin: 6px 0;
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.estimateNote {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.inquiryForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formTitle {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.formSubtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.inputStack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.textInput {
+  background: #181d28;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 11px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.textInput:focus {
+  border-color: var(--gold-500);
+}
+
+.submitBtn {
+  background: var(--gold-metallic);
+  color: #07080a;
+  padding: 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 4px;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+}
+
+.btnSubtext {
+  font-size: 0.7rem;
+  font-weight: 500;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.successBox {
+  text-align: center;
+  padding: 20px;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 10px;
+}
+
+.successIcon {
+  width: 44px;
+  height: 44px;
+  background: #22c55e;
+  color: #07080a;
+  font-weight: 900;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.successTitle {
+  font-size: 1.25rem;
+  color: #4ade80;
+  margin-bottom: 6px;
+}
+
+.successText {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 12px;
+}
+
+.refBadge {
+  font-family: monospace;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: var(--gold-300);
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.resetButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-soft);
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.resetButton:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+.trustFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 14px;
+}
+
+.trustPill {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 860px) {
+  .card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+}

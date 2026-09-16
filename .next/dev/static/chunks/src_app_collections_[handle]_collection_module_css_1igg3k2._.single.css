@@ -1,0 +1,417 @@
+/* [project]/src/app/collections/[handle]/collection.module.css [app-client] (css) */
+.collection-module__gz-LAW__pageWrapper {
+  background: #fff;
+  min-height: 100vh;
+}
+
+.collection-module__gz-LAW__mainContent {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 32px 32px 80px;
+}
+
+.collection-module__gz-LAW__breadcrumbs {
+  color: #78716c;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: .88rem;
+  display: flex;
+}
+
+.collection-module__gz-LAW__crumbLink {
+  color: #78716c;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.collection-module__gz-LAW__crumbLink:hover {
+  color: #b8860b;
+}
+
+.collection-module__gz-LAW__crumbSep {
+  color: #cbd5e1;
+}
+
+.collection-module__gz-LAW__crumbCurrent {
+  color: #1a1612;
+  font-weight: 600;
+}
+
+.collection-module__gz-LAW__collectionHero {
+  background: linear-gradient(135deg, #faf8f5 0%, #f5efe6 100%);
+  border: 1px solid #e7dfd5;
+  border-radius: 16px;
+  margin-bottom: 36px;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-module__gz-LAW__heroTag {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #b8860b;
+  margin-bottom: 12px;
+  font-size: .78rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.collection-module__gz-LAW__collectionTitle {
+  font-family: var(--font-serif), Georgia, serif;
+  color: #1a1612;
+  margin-bottom: 14px;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.collection-module__gz-LAW__collectionDesc {
+  color: #57534e;
+  max-width: 720px;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.collection-module__gz-LAW__collectionStats {
+  color: #78716c;
+  align-items: center;
+  gap: 20px;
+  font-size: .88rem;
+  display: flex;
+}
+
+.collection-module__gz-LAW__statPill {
+  color: #1a1612;
+  background: #fff;
+  border: 1px solid #e7dfd5;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-weight: 600;
+}
+
+.collection-module__gz-LAW__controlBar {
+  border-bottom: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding: 16px 0;
+  display: flex;
+}
+
+.collection-module__gz-LAW__filterGroup {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.collection-module__gz-LAW__filterBtn {
+  color: #475569;
+  cursor: pointer;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: inherit;
+  font-size: .85rem;
+  transition: all .2s;
+}
+
+.collection-module__gz-LAW__filterBtn:hover {
+  color: #1a1612;
+  border-color: #b8860b;
+}
+
+.collection-module__gz-LAW__activeFilterBtn {
+  color: #fff !important;
+  background: #1a1612 !important;
+  border-color: #1a1612 !important;
+}
+
+.collection-module__gz-LAW__sortGroup {
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.collection-module__gz-LAW__sortLabel {
+  color: #64748b;
+  font-size: .88rem;
+}
+
+.collection-module__gz-LAW__sortSelect {
+  color: #1a1612;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: .88rem;
+}
+
+.collection-module__gz-LAW__sortSelect:focus {
+  border-color: #b8860b;
+}
+
+.collection-module__gz-LAW__productGrid {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  margin-bottom: 60px;
+  display: grid;
+}
+
+.collection-module__gz-LAW__productCard {
+  background: #fff;
+  border: 1px solid #f1ece4;
+  border-radius: 12px;
+  flex-direction: column;
+  transition: all .3s cubic-bezier(.16, 1, .3, 1);
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-module__gz-LAW__productCard:hover {
+  border-color: #e7dfd5;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px #1a161214;
+}
+
+.collection-module__gz-LAW__badgeTag {
+  z-index: 10;
+  color: #fff;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  background: #b8860b;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: .72rem;
+  font-weight: 700;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
+.collection-module__gz-LAW__imgWrapper {
+  aspect-ratio: 1;
+  background: #faf8f5;
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-module__gz-LAW__productImage {
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+}
+
+.collection-module__gz-LAW__productCard:hover .collection-module__gz-LAW__productImage {
+  transform: scale(1.06);
+}
+
+.collection-module__gz-LAW__cardBody {
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  display: flex;
+}
+
+.collection-module__gz-LAW__productTitleLink {
+  color: #1a1612;
+  text-decoration: none;
+}
+
+.collection-module__gz-LAW__productTitle {
+  font-family: var(--font-serif), Georgia, serif;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.35;
+  transition: color .2s;
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+.collection-module__gz-LAW__productTitleLink:hover .collection-module__gz-LAW__productTitle {
+  color: #b8860b;
+}
+
+.collection-module__gz-LAW__productMeta {
+  color: #78716c;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: .78rem;
+  display: flex;
+}
+
+.collection-module__gz-LAW__metaDot {
+  color: #cbd5e1;
+}
+
+.collection-module__gz-LAW__priceRow {
+  border-top: 1px solid #f5f5f4;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: auto;
+  margin-bottom: 16px;
+  padding-top: 14px;
+  display: flex;
+}
+
+.collection-module__gz-LAW__priceAmount {
+  color: #1a1612;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.collection-module__gz-LAW__vatTag {
+  color: #78716c;
+  font-size: .72rem;
+}
+
+.collection-module__gz-LAW__cardActions {
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  display: grid;
+}
+
+.collection-module__gz-LAW__viewBtn {
+  color: #1a1612;
+  text-align: center;
+  background: #faf8f5;
+  border: 1px solid #e7dfd5;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: .84rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .2s;
+  display: block;
+}
+
+.collection-module__gz-LAW__viewBtn:hover {
+  background: #f5efe6;
+  border-color: #b8860b;
+}
+
+.collection-module__gz-LAW__addBtn {
+  color: #fff;
+  cursor: pointer;
+  background: #1a1612;
+  border: 1px solid #1a1612;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-family: inherit;
+  font-size: .84rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.collection-module__gz-LAW__addBtn:hover {
+  background: #b8860b;
+  border-color: #b8860b;
+}
+
+.collection-module__gz-LAW__emptyState {
+  text-align: center;
+  background: #faf8f5;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+  margin-bottom: 60px;
+  padding: 80px 20px;
+}
+
+.collection-module__gz-LAW__emptyIcon {
+  margin-bottom: 16px;
+  font-size: 3rem;
+}
+
+.collection-module__gz-LAW__emptyHeading {
+  color: #1a1612;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.collection-module__gz-LAW__emptyText {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.collection-module__gz-LAW__emptyCta {
+  color: #fff;
+  background: #1a1612;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.collection-module__gz-LAW__trustBanner {
+  background: #faf8f5;
+  border: 1px solid #e7dfd5;
+  border-radius: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 32px 40px;
+  display: grid;
+}
+
+.collection-module__gz-LAW__trustCol {
+  align-items: flex-start;
+  gap: 14px;
+  display: flex;
+}
+
+.collection-module__gz-LAW__trustIcon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.collection-module__gz-LAW__trustCol strong {
+  color: #1a1612;
+  margin-bottom: 4px;
+  font-size: .95rem;
+  display: block;
+}
+
+.collection-module__gz-LAW__trustCol p {
+  color: #78716c;
+  margin: 0;
+  font-size: .82rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 860px) {
+  .collection-module__gz-LAW__mainContent {
+    padding: 20px 16px 60px;
+  }
+
+  .collection-module__gz-LAW__collectionHero {
+    padding: 32px 20px;
+  }
+
+  .collection-module__gz-LAW__productGrid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .collection-module__gz-LAW__trustBanner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px 20px;
+  }
+}
+
+/*# sourceMappingURL=src_app_collections_%5Bhandle%5D_collection_module_css_1igg3k2._.single.css.map*/

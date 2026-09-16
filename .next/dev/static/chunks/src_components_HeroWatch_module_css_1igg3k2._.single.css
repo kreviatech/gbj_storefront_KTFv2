@@ -1,0 +1,301 @@
+/* [project]/src/components/HeroWatch.module.css [app-client] (css) */
+.HeroWatch-module__XaC38W__hero {
+  background-color: #fafaf9;
+  background-image: radial-gradient(circle at 80% 20%, #d4af3714 0%, #0000 40%), radial-gradient(circle at 20% 80%, #d4af370d 0%, #0000 40%);
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: scroll;
+  background-origin: padding-box;
+  background-clip: border-box;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 60px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.HeroWatch-module__XaC38W__container {
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 60px;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+}
+
+.HeroWatch-module__XaC38W__leftCol {
+  flex-direction: column;
+  gap: 22px;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__kickerRow {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__kickerBadge {
+  color: #996515;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  background: #d4af371f;
+  border: 1px solid #d4af374d;
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+.HeroWatch-module__XaC38W__kickerText {
+  color: #64748b;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+.HeroWatch-module__XaC38W__title {
+  font-family: var(--font-serif-family);
+  color: #0f172a;
+  letter-spacing: -.02em;
+  font-size: 3.8rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.HeroWatch-module__XaC38W__goldText {
+  color: #a16207;
+  background: linear-gradient(135deg, #a16207 0%, #d4af37 60%, #854d0e 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.HeroWatch-module__XaC38W__subtitle {
+  color: #475569;
+  max-width: 560px;
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
+
+.HeroWatch-module__XaC38W__categoryPills {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__pill {
+  color: #334155;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: .82rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px #00000008;
+}
+
+.HeroWatch-module__XaC38W__ctaRow {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 6px;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__exploreBtn {
+  color: #fff;
+  letter-spacing: .02em;
+  background: #0f172a;
+  border-radius: 100px;
+  padding: 14px 34px;
+  font-size: .95rem;
+  font-weight: 600;
+  transition: all .25s;
+  box-shadow: 0 4px 15px #0f172a33;
+}
+
+.HeroWatch-module__XaC38W__exploreBtn:hover {
+  background: #a16207;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px #a162074d;
+}
+
+.HeroWatch-module__XaC38W__secondaryBtn {
+  color: #0f172a;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 100px;
+  padding: 13px 26px;
+  font-size: .95rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.HeroWatch-module__XaC38W__secondaryBtn:hover {
+  background: #f8fafc;
+  border-color: #0f172a;
+}
+
+.HeroWatch-module__XaC38W__reviewsRow {
+  border-top: 1px solid #e2e8f0;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 14px;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__avatarGroup {
+  align-items: center;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__avatar {
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  margin-left: -10px;
+  font-size: .72rem;
+  font-weight: 700;
+  display: flex;
+  box-shadow: 0 2px 6px #00000026;
+}
+
+.HeroWatch-module__XaC38W__avatar:first-child {
+  margin-left: 0;
+}
+
+.HeroWatch-module__XaC38W__ratingText {
+  flex-direction: column;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__stars {
+  color: #b45309;
+  font-size: .92rem;
+  font-weight: 700;
+}
+
+.HeroWatch-module__XaC38W__reviewCount {
+  color: #64748b;
+  font-size: .78rem;
+}
+
+.HeroWatch-module__XaC38W__rightCol {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__showcaseFrame {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 520px;
+  transition: transform .4s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px #0f172a26, 0 0 30px #d4af371a;
+}
+
+.HeroWatch-module__XaC38W__showcaseFrame:hover {
+  transform: scale(1.02);
+}
+
+.HeroWatch-module__XaC38W__showcaseImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.HeroWatch-module__XaC38W__floatingBadge {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: #ffffffeb;
+  border: 1px solid #d4af374d;
+  border-radius: 12px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  box-shadow: 0 8px 24px #0000001a;
+}
+
+.HeroWatch-module__XaC38W__liveIndicator {
+  background: #16a34a;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 8px #16a34a;
+}
+
+.HeroWatch-module__XaC38W__badgeTitle {
+  color: #0f172a;
+  font-size: .85rem;
+  display: block;
+}
+
+.HeroWatch-module__XaC38W__badgeSubtitle {
+  color: #64748b;
+  font-size: .74rem;
+  display: block;
+}
+
+.HeroWatch-module__XaC38W__carouselDots {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.HeroWatch-module__XaC38W__dot {
+  cursor: pointer;
+  background: #cbd5e1;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  transition: all .2s;
+}
+
+.HeroWatch-module__XaC38W__activeDot {
+  background: #0f172a;
+  border-radius: 12px;
+  width: 24px;
+}
+
+@media (max-width: 1024px) {
+  .HeroWatch-module__XaC38W__container {
+    text-align: center;
+    grid-template-columns: 1fr;
+  }
+
+  .HeroWatch-module__XaC38W__leftCol {
+    align-items: center;
+  }
+
+  .HeroWatch-module__XaC38W__subtitle {
+    margin: 0 auto;
+  }
+
+  .HeroWatch-module__XaC38W__title {
+    font-size: 3rem;
+  }
+
+  .HeroWatch-module__XaC38W__categoryPills {
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=src_components_HeroWatch_module_css_1igg3k2._.single.css.map*/

@@ -1,0 +1,135 @@
+/* [project]/src/components/BottomBanner.module.css [app-client] (css) */
+.BottomBanner-module__3l3dbW__section {
+  background: #fff;
+  padding: 80px 0 100px;
+}
+
+.BottomBanner-module__3l3dbW__container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.BottomBanner-module__3l3dbW__bannerCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  display: grid;
+  overflow: hidden;
+  box-shadow: 0 20px 40px #0f172a0d;
+}
+
+.BottomBanner-module__3l3dbW__leftCol {
+  flex-direction: column;
+  gap: 20px;
+  padding: 60px 50px;
+  display: flex;
+}
+
+.BottomBanner-module__3l3dbW__title {
+  font-family: var(--font-serif-family);
+  color: #0f172a;
+  letter-spacing: -.01em;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.BottomBanner-module__3l3dbW__subtitle {
+  color: #64748b;
+  max-width: 480px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.BottomBanner-module__3l3dbW__exploreBtn {
+  color: #fff;
+  background: #0f172a;
+  border-radius: 100px;
+  margin-top: 4px;
+  padding: 14px 34px;
+  font-size: .95rem;
+  font-weight: 600;
+  transition: all .2s;
+  display: inline-block;
+}
+
+.BottomBanner-module__3l3dbW__exploreBtn:hover {
+  background: var(--gold-500);
+  color: #07080a;
+}
+
+.BottomBanner-module__3l3dbW__reviewsRow {
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  display: flex;
+}
+
+.BottomBanner-module__3l3dbW__stars {
+  color: #f59e0b;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+}
+
+.BottomBanner-module__3l3dbW__reviewCount {
+  color: #64748b;
+  font-size: .84rem;
+  font-weight: 600;
+}
+
+.BottomBanner-module__3l3dbW__rightCol {
+  justify-content: flex-end;
+  height: 100%;
+  display: flex;
+}
+
+.BottomBanner-module__3l3dbW__watchImageWrapper {
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  height: 380px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.BottomBanner-module__3l3dbW__bannerDialImg {
+  object-fit: cover;
+  object-position: right center;
+  border-radius: 20px 0 0 20px;
+  width: 100%;
+  height: 100%;
+  transition: transform .5s;
+}
+
+.BottomBanner-module__3l3dbW__bannerCard:hover .BottomBanner-module__3l3dbW__bannerDialImg {
+  transform: scale(1.04);
+}
+
+@media (max-width: 960px) {
+  .BottomBanner-module__3l3dbW__bannerCard {
+    grid-template-columns: 1fr;
+  }
+
+  .BottomBanner-module__3l3dbW__leftCol {
+    text-align: center;
+    align-items: center;
+    padding: 40px 30px;
+  }
+
+  .BottomBanner-module__3l3dbW__watchImageWrapper {
+    justify-content: center;
+    max-width: 100%;
+    height: 300px;
+  }
+
+  .BottomBanner-module__3l3dbW__bannerDialImg {
+    border-radius: 0;
+  }
+}
+
+/*# sourceMappingURL=src_components_BottomBanner_module_css_1igg3k2._.single.css.map*/
