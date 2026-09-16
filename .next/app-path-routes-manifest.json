@@ -1,6 +1,7 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/account/page": "/account",
   "/collections/[handle]/page": "/collections/[handle]",
   "/favicon.ico/route": "/favicon.ico",
   "/looking-to-sell/page": "/looking-to-sell",

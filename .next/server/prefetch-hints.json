@@ -22,6 +22,20 @@
       }
     }
   },
+  "/account": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 96,
+        "slots": {
+          "children": {
+            "hints": 160,
+            "slots": null
+          }
+        }
+      }
+    }
+  },
   "/looking-to-sell": {
     "hints": 64,
     "slots": {
