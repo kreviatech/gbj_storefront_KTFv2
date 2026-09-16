@@ -5,6 +5,10 @@ import {
   ShopifyImage,
   ShopifyVariant,
   ShopifyCollection,
+  ShopifyCustomer,
+  ShopifyCustomerAccessToken,
+  CartBuyerIdentityInput,
+  CartBuyerIdentity,
 } from "./types";
 
 const domain =
@@ -778,7 +782,9 @@ export async function getCollectionByHandle(
 
 /**
  * Create a live checkout on Shopify Storefront API using cartCreate.
- * Returns the direct Shopify checkoutUrl (https://sxr11n-4z.myshopify.com/cart/c/...)
+ * If buyerIdentity is provided (with customerAccessToken and/or email),
+ * Shopify associates the cart with the authenticated customer, allowing
+ * pre-filled email, saved addresses, and authenticated checkout.
  */
 export async function createShopifyCheckout(
   items: Array<{
@@ -786,8 +792,13 @@ export async function createShopifyCheckout(
     variantId?: string;
     product?: ShopifyProduct;
     quantity: number;
-  }>
-): Promise<{ checkoutUrl: string; cartId: string }> {
+  }>,
+  buyerIdentity?: CartBuyerIdentityInput
+): Promise<{
+  checkoutUrl: string;
+  cartId: string;
+  buyerIdentity?: CartBuyerIdentity | null;
+}> {
   // If merchandiseId is missing, try to resolve from variantId or product.variants[0].id
   const lines: Array<{ merchandiseId: string; quantity: number }> = [];
 
@@ -820,8 +831,8 @@ export async function createShopifyCheckout(
   }
 
   const mutation = `
-    mutation createCart($lines: [CartLineInput!]) {
-      cartCreate(input: { lines: $lines }) {
+    mutation createCart($lines: [CartLineInput!], $buyerIdentity: CartBuyerIdentityInput) {
+      cartCreate(input: { lines: $lines, buyerIdentity: $buyerIdentity }) {
         cart {
           id
           checkoutUrl
@@ -830,6 +841,18 @@ export async function createShopifyCheckout(
             totalAmount {
               amount
               currencyCode
+            }
+          }
+          buyerIdentity {
+            email
+            phone
+            countryCode
+            customer {
+              id
+              email
+              firstName
+              lastName
+              displayName
             }
           }
         }
@@ -841,6 +864,11 @@ export async function createShopifyCheckout(
       }
     }
   `;
+
+  const variables: Record<string, unknown> = { lines };
+  if (buyerIdentity && Object.keys(buyerIdentity).length > 0) {
+    variables.buyerIdentity = buyerIdentity;
+  }
 
   const data = await shopifyFetch<{
     cartCreate: {
@@ -854,12 +882,13 @@ export async function createShopifyCheckout(
             currencyCode: string;
           };
         };
+        buyerIdentity?: CartBuyerIdentity | null;
       } | null;
       userErrors: Array<{ code: string; field: string[]; message: string }>;
     };
   }>({
     query: mutation,
-    variables: { lines },
+    variables,
     revalidate: 0,
   });
 
@@ -874,7 +903,362 @@ export async function createShopifyCheckout(
   return {
     checkoutUrl: data.cartCreate.cart.checkoutUrl,
     cartId: data.cartCreate.cart.id,
+    buyerIdentity: data.cartCreate.cart.buyerIdentity,
   };
+}
+
+/**
+ * Associate or update a customer buyer identity on an existing Shopify Cart.
+ */
+export async function updateCartBuyerIdentity(
+  cartId: string,
+  buyerIdentity: CartBuyerIdentityInput
+): Promise<{
+  checkoutUrl: string;
+  cartId: string;
+  buyerIdentity?: CartBuyerIdentity | null;
+}> {
+  const mutation = `
+    mutation updateCartBuyerIdentity($cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!) {
+      cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {
+        cart {
+          id
+          checkoutUrl
+          buyerIdentity {
+            email
+            phone
+            countryCode
+            customer {
+              id
+              email
+              firstName
+              lastName
+              displayName
+            }
+          }
+        }
+        userErrors {
+          code
+          field
+          message
+        }
+      }
+    }
+  `;
+
+  const data = await shopifyFetch<{
+    cartBuyerIdentityUpdate: {
+      cart: {
+        id: string;
+        checkoutUrl: string;
+        buyerIdentity?: CartBuyerIdentity | null;
+      } | null;
+      userErrors: Array<{ code: string; field: string[]; message: string }>;
+    };
+  }>({
+    query: mutation,
+    variables: { cartId, buyerIdentity },
+    revalidate: 0,
+  });
+
+  if (
+    data.cartBuyerIdentityUpdate.userErrors &&
+    data.cartBuyerIdentityUpdate.userErrors.length > 0
+  ) {
+    throw new Error(
+      data.cartBuyerIdentityUpdate.userErrors.map((e) => e.message).join(", ")
+    );
+  }
+
+  if (!data.cartBuyerIdentityUpdate.cart) {
+    throw new Error("Failed to update cart buyer identity.");
+  }
+
+  return {
+    checkoutUrl: data.cartBuyerIdentityUpdate.cart.checkoutUrl,
+    cartId: data.cartBuyerIdentityUpdate.cart.id,
+    buyerIdentity: data.cartBuyerIdentityUpdate.cart.buyerIdentity,
+  };
+}
+
+/**
+ * Authenticate customer on the custom storefront using email and password.
+ * Returns a valid Shopify customerAccessToken.
+ */
+export async function customerLogin(
+  email: string,
+  password: string
+): Promise<ShopifyCustomerAccessToken> {
+  const mutation = `
+    mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+      customerAccessTokenCreate(input: $input) {
+        customerAccessToken {
+          accessToken
+          expiresAt
+        }
+        customerUserErrors {
+          code
+          field
+          message
+        }
+      }
+    }
+  `;
+
+  const data = await shopifyFetch<{
+    customerAccessTokenCreate: {
+      customerAccessToken: ShopifyCustomerAccessToken | null;
+      customerUserErrors: Array<{ code: string; field: string[]; message: string }>;
+    };
+  }>({
+    query: mutation,
+    variables: { input: { email, password } },
+    revalidate: 0,
+  });
+
+  if (
+    data.customerAccessTokenCreate.customerUserErrors &&
+    data.customerAccessTokenCreate.customerUserErrors.length > 0
+  ) {
+    throw new Error(
+      data.customerAccessTokenCreate.customerUserErrors.map((e) => e.message).join(", ")
+    );
+  }
+
+  if (!data.customerAccessTokenCreate.customerAccessToken) {
+    throw new Error("Incorrect email or password.");
+  }
+
+  return data.customerAccessTokenCreate.customerAccessToken;
+}
+
+/**
+ * Register a new customer on the Shopify store.
+ */
+export async function customerRegister(input: {
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  password: string;
+  acceptsMarketing?: boolean;
+}): Promise<{ id: string; email: string; firstName?: string; lastName?: string }> {
+  const mutation = `
+    mutation customerCreate($input: CustomerCreateInput!) {
+      customerCreate(input: $input) {
+        customer {
+          id
+          email
+          firstName
+          lastName
+        }
+        customerUserErrors {
+          code
+          field
+          message
+        }
+      }
+    }
+  `;
+
+  const data = await shopifyFetch<{
+    customerCreate: {
+      customer: { id: string; email: string; firstName?: string; lastName?: string } | null;
+      customerUserErrors: Array<{ code: string; field: string[]; message: string }>;
+    };
+  }>({
+    query: mutation,
+    variables: { input },
+    revalidate: 0,
+  });
+
+  if (
+    data.customerCreate.customerUserErrors &&
+    data.customerCreate.customerUserErrors.length > 0
+  ) {
+    throw new Error(
+      data.customerCreate.customerUserErrors.map((e) => e.message).join(", ")
+    );
+  }
+
+  if (!data.customerCreate.customer) {
+    throw new Error("Failed to register customer account.");
+  }
+
+  return data.customerCreate.customer;
+}
+
+/**
+ * Log out and invalidate a Shopify customerAccessToken.
+ */
+export async function customerLogout(customerAccessToken: string): Promise<boolean> {
+  const mutation = `
+    mutation customerAccessTokenDelete($customerAccessToken: String!) {
+      customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
+        deletedAccessToken
+        deletedCustomerAccessTokenId
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await shopifyFetch<{
+      customerAccessTokenDelete: {
+        deletedAccessToken: string | null;
+        userErrors: Array<{ field: string[]; message: string }>;
+      };
+    }>({
+      query: mutation,
+      variables: { customerAccessToken },
+      revalidate: 0,
+    });
+
+    return !!data.customerAccessTokenDelete?.deletedAccessToken;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Request password recovery email for a customer.
+ */
+export async function customerRecoverPassword(email: string): Promise<boolean> {
+  const mutation = `
+    mutation customerRecover($email: String!) {
+      customerRecover(email: $email) {
+        customerUserErrors {
+          code
+          field
+          message
+        }
+      }
+    }
+  `;
+
+  const data = await shopifyFetch<{
+    customerRecover: {
+      customerUserErrors: Array<{ code: string; field: string[]; message: string }>;
+    };
+  }>({
+    query: mutation,
+    variables: { email },
+    revalidate: 0,
+  });
+
+  if (
+    data.customerRecover.customerUserErrors &&
+    data.customerRecover.customerUserErrors.length > 0
+  ) {
+    throw new Error(
+      data.customerRecover.customerUserErrors.map((e) => e.message).join(", ")
+    );
+  }
+
+  return true;
+}
+
+/**
+ * Fetch authenticated customer details, default address, saved addresses, and recent orders.
+ */
+export async function getCustomer(
+  customerAccessToken: string
+): Promise<ShopifyCustomer | null> {
+  const query = `
+    query getCustomer($customerAccessToken: String!) {
+      customer(customerAccessToken: $customerAccessToken) {
+        id
+        firstName
+        lastName
+        displayName
+        email
+        phone
+        defaultAddress {
+          id
+          address1
+          address2
+          city
+          province
+          zip
+          country
+          formatted
+        }
+        addresses(first: 10) {
+          edges {
+            node {
+              id
+              address1
+              address2
+              city
+              province
+              zip
+              country
+              formatted
+            }
+          }
+        }
+        orders(first: 10, sortKey: PROCESSED_AT, reverse: true) {
+          edges {
+            node {
+              id
+              name
+              orderNumber
+              processedAt
+              financialStatus
+              fulfillmentStatus
+              totalPrice {
+                amount
+                currencyCode
+              }
+              successfulFulfillments {
+                trackingCompany
+                trackingInfo {
+                  number
+                  url
+                }
+              }
+              lineItems(first: 10) {
+                edges {
+                  node {
+                    title
+                    quantity
+                    variant {
+                      id
+                      title
+                      image {
+                        url
+                      }
+                      price {
+                        amount
+                        currencyCode
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await shopifyFetch<{
+      customer: ShopifyCustomer | null;
+    }>({
+      query,
+      variables: { customerAccessToken },
+      revalidate: 0,
+    });
+
+    return data.customer;
+  } catch (err) {
+    console.error("Error fetching customer profile:", err);
+    return null;
+  }
 }
 
 /**
@@ -899,4 +1283,5 @@ export function getCustomerOAuthUrl(redirectUri?: string): string {
   }
   return `${base}?${params.toString()}`;
 }
+
 

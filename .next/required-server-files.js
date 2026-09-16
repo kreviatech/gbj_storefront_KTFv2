@@ -110,7 +110,7 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/muktiupadhyay/Documents/GitHub/gbj_storefront",
+    "outputFileTracingRoot": "/Users/muktiupadhyay/Documents/GitHub/gbj_storefront_KTFv2",
     "enablePrerenderSourceMaps": true,
     "cacheComponents": false,
     "cacheLife": {
@@ -325,13 +325,13 @@ self.__SERVER_FILES_MANIFEST={
     "htmlLimitedBots": "[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight",
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
-    "repoRoot": "/Users/muktiupadhyay/Documents/GitHub/gbj_storefront",
+    "repoRoot": "/Users/muktiupadhyay/Documents/GitHub/gbj_storefront_KTFv2",
     "turbopack": {
-      "root": "/Users/muktiupadhyay/Documents/GitHub/gbj_storefront"
+      "root": "/Users/muktiupadhyay/Documents/GitHub/gbj_storefront_KTFv2"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/Users/muktiupadhyay/Documents/GitHub/gbj_storefront",
+  "appDir": "/Users/muktiupadhyay/Documents/GitHub/gbj_storefront_KTFv2",
   "relativeAppDir": "",
   "files": [
     ".next/package.json",

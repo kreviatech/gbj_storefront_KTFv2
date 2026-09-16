@@ -373,6 +373,55 @@
   background: #c5a059;
 }
 
+.accountSignOutBtn {
+  background: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 8px 0;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.accountSignOutBtn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}
+
+.dropdownEmail {
+  font-size: 0.74rem !important;
+  color: #78716c;
+  word-break: break-all;
+}
+
+.dropdownRole {
+  font-size: 0.72rem !important;
+  font-weight: 600;
+  color: #b8860b !important;
+  margin-top: 2px;
+}
+
+.authStatusDot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background: #c5a059;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.userLoggedIn {
+  position: relative;
+  color: #b8860b;
+}
+
+
 /* Slide-out Hamburger Menu Drawer */
 .drawerOverlay {
   position: fixed;

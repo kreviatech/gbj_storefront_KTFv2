@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import styles from "./Navbar.module.css";
 
 const SUB_MENU_ITEMS = [
@@ -23,6 +24,7 @@ const SUB_MENU_ITEMS = [
 
 export default function Navbar() {
   const { openCart, cartCount } = useCart();
+  const { customer, logout } = useAuth();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
@@ -153,25 +155,30 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              <Link
-                href="/account"
-                className={styles.iconButton}
-                aria-label="Customer Account & Orders"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+              <div style={{ position: "relative" }}>
+                <button
+                  type="button"
+                  className={`${styles.iconButton} ${customer ? styles.userLoggedIn : ""}`}
+                  onClick={() => setIsAccountOpen(!isAccountOpen)}
+                  aria-label={customer ? `VIP Member: ${customer.displayName}` : "Customer Account"}
+                  title={customer ? `VIP Member: ${customer.displayName}` : "Customer Account"}
                 >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </Link>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  {customer && <span className={styles.authStatusDot} title="Authenticated Customer"></span>}
+                </button>
+              </div>
 
               <button
                 type="button"
@@ -286,39 +293,80 @@ export default function Navbar() {
         {/* Account Quick Dropdown */}
         {isAccountOpen && (
           <div className={styles.accountDropdown}>
-            <div className={styles.accountHeader}>
-              <strong>Gold Bank Vault Member</strong>
-              <span>Est. 2016 • East Midlands</span>
-            </div>
-            <div className={styles.accountLinks}>
-              <Link
-                href="/account"
-                className={styles.accountLinkItem}
-                onClick={() => setIsAccountOpen(false)}
-              >
-                📦 Customer Account & Orders
-              </Link>
-              <Link
-                href="/looking-to-sell"
-                className={styles.accountLinkItem}
-                onClick={() => setIsAccountOpen(false)}
-              >
-                💰 Looking to Sell? Instant Valuation
-              </Link>
-              <a href="tel:08001234567" className={styles.accountLinkItem}>
-                📞 Showroom Enquiries: 0800 123 4567
-              </a>
-              <a
-                href="https://shopify.com/99668787516/account"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.accountSignInBtn}
-                style={{ textAlign: "center", textDecoration: "none", display: "block" }}
-                onClick={() => setIsAccountOpen(false)}
-              >
-                Sign In with Shop Pay
-              </a>
-            </div>
+            {customer ? (
+              <>
+                <div className={styles.accountHeader}>
+                  <strong>👑 {customer.displayName}</strong>
+                  <span className={styles.dropdownEmail}>{customer.email}</span>
+                  <span className={styles.dropdownRole}>Authenticated VIP Member</span>
+                </div>
+                <div className={styles.accountLinks}>
+                  <Link
+                    href="/account"
+                    className={styles.accountLinkItem}
+                    onClick={() => setIsAccountOpen(false)}
+                  >
+                    📦 My Orders & Addresses
+                  </Link>
+                  <Link
+                    href="/looking-to-sell"
+                    className={styles.accountLinkItem}
+                    onClick={() => setIsAccountOpen(false)}
+                  >
+                    💰 Looking to Sell? Instant Valuation
+                  </Link>
+                  <a href="tel:08001234567" className={styles.accountLinkItem}>
+                    📞 Showroom Concierge: 0800 123 4567
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      logout();
+                      setIsAccountOpen(false);
+                    }}
+                    className={styles.accountSignOutBtn}
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={styles.accountHeader}>
+                  <strong>Gold Bank Vault Access</strong>
+                  <span>Est. 2016 • East Midlands</span>
+                </div>
+                <div className={styles.accountLinks}>
+                  <Link
+                    href="/account"
+                    className={styles.accountLinkItem}
+                    onClick={() => setIsAccountOpen(false)}
+                  >
+                    🔐 Sign In / Create Account
+                  </Link>
+                  <Link
+                    href="/looking-to-sell"
+                    className={styles.accountLinkItem}
+                    onClick={() => setIsAccountOpen(false)}
+                  >
+                    💰 Looking to Sell? Instant Valuation
+                  </Link>
+                  <a href="tel:08001234567" className={styles.accountLinkItem}>
+                    📞 Showroom Enquiries: 0800 123 4567
+                  </a>
+                  <a
+                    href="https://shopify.com/99668787516/account"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.accountSignInBtn}
+                    style={{ textAlign: "center", textDecoration: "none", display: "block" }}
+                    onClick={() => setIsAccountOpen(false)}
+                  >
+                    Sign In with Shop Pay
+                  </a>
+                </div>
+              </>
+            )}
           </div>
         )}
       </header>

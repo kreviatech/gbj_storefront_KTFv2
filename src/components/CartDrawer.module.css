@@ -297,3 +297,62 @@
 .continueBtn:hover {
   color: var(--text-main);
 }
+
+.authBadge {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-top: 2px;
+}
+
+.authBadgeIcon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.authBadgeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authBadgeTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold-300);
+}
+
+.authBadgeDesc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.guestPrompt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.guestSignInLink {
+  color: var(--gold-400);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.guestSignInLink:hover {
+  color: var(--gold-200);
+}
+

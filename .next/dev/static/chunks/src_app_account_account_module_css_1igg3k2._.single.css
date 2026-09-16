@@ -24,6 +24,7 @@
 
 .account-module__zd0OHa__breadcrumbs a {
   color: #c9a84c;
+  text-decoration: none;
   transition: color .2s;
 }
 
@@ -67,8 +68,145 @@
 .account-module__zd0OHa__subtitle {
   color: #9ea4b5;
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   line-height: 1.6;
+}
+
+.account-module__zd0OHa__loadingContainer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 100px 20px;
+  display: flex;
+}
+
+.account-module__zd0OHa__spinner {
+  border: 3px solid #c9a84c33;
+  border-top-color: #c9a84c;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  animation: .8s linear infinite account-module__zd0OHa__spin;
+}
+
+@keyframes account-module__zd0OHa__spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.account-module__zd0OHa__loadingText {
+  color: #c9a84c;
+  letter-spacing: .04em;
+  font-size: .95rem;
+}
+
+.account-module__zd0OHa__tabHeaders {
+  background: #0006;
+  border: 1px solid #ffffff14;
+  border-radius: 8px;
+  gap: 4px;
+  margin-bottom: 24px;
+  padding: 4px;
+  display: flex;
+}
+
+.account-module__zd0OHa__tabBtn {
+  color: #8b92a5;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  flex: 1;
+  padding: 10px 16px;
+  font-size: .9rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.account-module__zd0OHa__tabBtn:hover {
+  color: #fff;
+}
+
+.account-module__zd0OHa__activeTabBtn {
+  color: #c9a84c;
+  background: #c9a84c26;
+  border: 1px solid #c9a84c4d;
+}
+
+.account-module__zd0OHa__errorAlert {
+  color: #f87171;
+  background: #ef44441f;
+  border: 1px solid #ef44444d;
+  border-radius: 8px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  font-size: .88rem;
+  display: flex;
+}
+
+.account-module__zd0OHa__successAlert {
+  color: #4ade80;
+  background: #22c55e1f;
+  border: 1px solid #22c55e4d;
+  border-radius: 8px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  font-size: .88rem;
+  display: flex;
+}
+
+.account-module__zd0OHa__authForm {
+  flex-direction: column;
+  display: flex;
+}
+
+.account-module__zd0OHa__nameRow {
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  display: grid;
+}
+
+.account-module__zd0OHa__labelRow {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.account-module__zd0OHa__forgotLink {
+  color: #c9a84c;
+  cursor: pointer;
+  text-underline-offset: 2px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: .78rem;
+  text-decoration: underline;
+}
+
+.account-module__zd0OHa__forgotLink:hover {
+  color: #e5cf7b;
+}
+
+.account-module__zd0OHa__checkboxLabel {
+  color: #8b92a5;
+  cursor: pointer;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 6px 0 20px;
+  font-size: .82rem;
+  line-height: 1.4;
+  display: flex;
+}
+
+.account-module__zd0OHa__checkbox {
+  accent-color: #c9a84c;
+  margin-top: 2px;
 }
 
 .account-module__zd0OHa__gridContainer {
@@ -141,9 +279,9 @@
   align-items: center;
   gap: 10px;
   width: 100%;
-  margin-bottom: 18px;
-  padding: 16px 24px;
-  font-size: 1rem;
+  margin-bottom: 16px;
+  padding: 15px 24px;
+  font-size: .96rem;
   font-weight: 700;
   text-decoration: none;
   transition: all .25s;
@@ -151,21 +289,27 @@
   box-shadow: 0 4px 20px #c9a84c4d;
 }
 
-.account-module__zd0OHa__primaryAuthBtn:hover {
+.account-module__zd0OHa__primaryAuthBtn:hover:not(:disabled) {
   background: linear-gradient(135deg, #dfbc5c 0%, #b89237 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 26px #c9a84c73;
 }
 
+.account-module__zd0OHa__primaryAuthBtn:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
 .account-module__zd0OHa__secondaryAuthBtn {
   color: #fff;
+  cursor: pointer;
   background: #ffffff0d;
   border: 1px solid #ffffff26;
   border-radius: 8px;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   padding: 13px 20px;
   font-size: .92rem;
   font-weight: 600;
@@ -185,8 +329,8 @@
   letter-spacing: .08em;
   align-items: center;
   gap: 12px;
-  margin: 20px 0;
-  font-size: .78rem;
+  margin: 18px 0;
+  font-size: .76rem;
   display: flex;
 }
 
@@ -252,10 +396,15 @@
   transition: all .2s;
 }
 
-.account-module__zd0OHa__lookupBtn:hover {
+.account-module__zd0OHa__lookupBtn:hover:not(:disabled) {
   color: #fff;
   background: #c9a84c26;
   border-color: #c9a84c;
+}
+
+.account-module__zd0OHa__lookupBtn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
 }
 
 .account-module__zd0OHa__lookupResult {
@@ -266,6 +415,422 @@
   margin-top: 18px;
   padding: 16px;
   font-size: .88rem;
+}
+
+.account-module__zd0OHa__dashboard {
+  flex-direction: column;
+  gap: 36px;
+  margin-bottom: 60px;
+  display: flex;
+}
+
+.account-module__zd0OHa__memberBanner {
+  background: linear-gradient(135deg, #141922 0%, #0d1015 100%);
+  border: 1px solid #c9a84c59;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  display: flex;
+  box-shadow: 0 10px 30px #00000080;
+}
+
+.account-module__zd0OHa__memberMeta {
+  flex-direction: column;
+  gap: 6px;
+  display: flex;
+}
+
+.account-module__zd0OHa__memberStatusBadge {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #c9a84c;
+  background: #c9a84c1f;
+  border-radius: 9999px;
+  width: fit-content;
+  padding: 4px 12px;
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.account-module__zd0OHa__memberName {
+  font-family: var(--font-serif-family, "Cinzel", Georgia, serif);
+  color: #fff;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.account-module__zd0OHa__memberEmail {
+  color: #8b92a5;
+  font-size: .9rem;
+}
+
+.account-module__zd0OHa__bannerActions {
+  align-items: center;
+  gap: 14px;
+  display: flex;
+}
+
+.account-module__zd0OHa__browseVaultBtn {
+  color: #07080a;
+  background: linear-gradient(135deg, #c9a84c 0%, #a4822f 100%);
+  border-radius: 6px;
+  padding: 12px 22px;
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all .2s;
+}
+
+.account-module__zd0OHa__browseVaultBtn:hover {
+  background: linear-gradient(135deg, #dfbc5c 0%, #b89237 100%);
+  transform: translateY(-1px);
+}
+
+.account-module__zd0OHa__signOutBtn {
+  color: #e1e4ed;
+  cursor: pointer;
+  background: #ffffff0f;
+  border: 1px solid #ffffff26;
+  border-radius: 6px;
+  padding: 11px 20px;
+  font-size: .88rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.account-module__zd0OHa__signOutBtn:hover {
+  color: #f87171;
+  background: #ef444426;
+  border-color: #ef444466;
+}
+
+.account-module__zd0OHa__overviewGrid {
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  display: grid;
+}
+
+@media (max-width: 850px) {
+  .account-module__zd0OHa__overviewGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.account-module__zd0OHa__dashboardCard {
+  background: #0f1217;
+  border: 1px solid #ffffff14;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 8px 24px #00000059;
+}
+
+.account-module__zd0OHa__addressBox {
+  flex-direction: column;
+  gap: 4px;
+  display: flex;
+}
+
+.account-module__zd0OHa__addressLine {
+  color: #e1e4ed;
+  margin: 0;
+  font-size: .92rem;
+  line-height: 1.5;
+}
+
+.account-module__zd0OHa__addressPhone {
+  color: #8b92a5;
+  margin: 6px 0 0;
+  font-size: .86rem;
+}
+
+.account-module__zd0OHa__syncNotice {
+  color: #4ade80;
+  background: #22c55e14;
+  border: 1px solid #22c55e33;
+  border-radius: 4px;
+  width: fit-content;
+  margin-top: 14px;
+  padding: 6px 12px;
+  font-size: .78rem;
+}
+
+.account-module__zd0OHa__emptyAddress {
+  color: #8b92a5;
+  font-size: .9rem;
+}
+
+.account-module__zd0OHa__subtext {
+  color: #656d80;
+  margin-top: 6px;
+  font-size: .82rem;
+  line-height: 1.4;
+}
+
+.account-module__zd0OHa__privilegeList {
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.account-module__zd0OHa__privilegeList li {
+  color: #9ea4b5;
+  padding-left: 20px;
+  font-size: .86rem;
+  line-height: 1.45;
+  position: relative;
+}
+
+.account-module__zd0OHa__privilegeList li:before {
+  content: "✦";
+  color: #c9a84c;
+  font-size: .8rem;
+  position: absolute;
+  left: 0;
+}
+
+.account-module__zd0OHa__privilegeList li strong {
+  color: #fff;
+}
+
+.account-module__zd0OHa__ordersSection {
+  background: #0f1217;
+  border: 1px solid #ffffff14;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 10px 30px #0006;
+}
+
+.account-module__zd0OHa__ordersHeader {
+  border-bottom: 1px solid #ffffff14;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  display: flex;
+}
+
+.account-module__zd0OHa__ordersTitle {
+  font-family: var(--font-serif-family, "Cinzel", Georgia, serif);
+  color: #fff;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+}
+
+.account-module__zd0OHa__ordersCount {
+  color: #c9a84c;
+  background: #c9a84c1a;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+.account-module__zd0OHa__emptyOrdersCard {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  display: flex;
+}
+
+.account-module__zd0OHa__emptyIcon {
+  margin-bottom: 16px;
+  font-size: 3rem;
+}
+
+.account-module__zd0OHa__emptyOrdersTitle {
+  font-family: var(--font-serif-family, "Cinzel", Georgia, serif);
+  color: #fff;
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.account-module__zd0OHa__emptyOrdersText {
+  color: #8b92a5;
+  max-width: 480px;
+  margin: 0 0 24px;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.account-module__zd0OHa__orderList {
+  flex-direction: column;
+  gap: 20px;
+  display: flex;
+}
+
+.account-module__zd0OHa__orderCard {
+  background: #090b0f;
+  border: 1px solid #ffffff14;
+  border-radius: 10px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  display: flex;
+}
+
+.account-module__zd0OHa__orderCardTop {
+  border-bottom: 1px solid #ffffff0f;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  display: flex;
+}
+
+.account-module__zd0OHa__orderNumber {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: block;
+}
+
+.account-module__zd0OHa__orderDate {
+  color: #8b92a5;
+  font-size: .8rem;
+}
+
+.account-module__zd0OHa__orderStatuses {
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.account-module__zd0OHa__statusBadge {
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.account-module__zd0OHa__statusPaid {
+  color: #4ade80;
+  background: #22c55e26;
+  border: 1px solid #22c55e4d;
+}
+
+.account-module__zd0OHa__statusPending {
+  color: #facc15;
+  background: #eab30826;
+  border: 1px solid #eab3084d;
+}
+
+.account-module__zd0OHa__statusFulfilled {
+  color: #60a5fa;
+  background: #3b82f626;
+  border: 1px solid #3b82f64d;
+}
+
+.account-module__zd0OHa__statusUnfulfilled {
+  color: #cbd5e1;
+  background: #94a3b826;
+  border: 1px solid #94a3b84d;
+}
+
+.account-module__zd0OHa__orderTotal {
+  color: #c9a84c;
+  margin-left: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.account-module__zd0OHa__orderLineItems {
+  flex-direction: column;
+  gap: 12px;
+  display: flex;
+}
+
+.account-module__zd0OHa__lineItemRow {
+  align-items: center;
+  gap: 14px;
+  display: flex;
+}
+
+.account-module__zd0OHa__lineItemImgWrap {
+  background: #14171d;
+  border-radius: 6px;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+}
+
+.account-module__zd0OHa__lineItemImg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.account-module__zd0OHa__lineItemInfo {
+  flex-direction: column;
+  flex: 1;
+  gap: 2px;
+  display: flex;
+}
+
+.account-module__zd0OHa__lineItemTitle {
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.account-module__zd0OHa__lineItemVariant {
+  color: #8b92a5;
+  font-size: .78rem;
+}
+
+.account-module__zd0OHa__lineItemQty {
+  color: #656d80;
+  font-size: .78rem;
+}
+
+.account-module__zd0OHa__lineItemPrice {
+  color: #fff;
+  font-size: .92rem;
+  font-weight: 600;
+}
+
+.account-module__zd0OHa__trackingBox {
+  background: #c9a84c0f;
+  border: 1px solid #c9a84c33;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.account-module__zd0OHa__trackingRow {
+  color: #e1e4ed;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: .84rem;
+  display: flex;
+}
+
+.account-module__zd0OHa__trackingLink {
+  color: #c9a84c;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.account-module__zd0OHa__trackingLink:hover {
+  color: #e5cf7b;
 }
 
 .account-module__zd0OHa__perksGrid {

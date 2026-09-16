@@ -80,3 +80,97 @@ export interface ShopifyCollection {
   image?: ShopifyImage | null;
   products: ShopifyProduct[];
 }
+
+export interface ShopifyAddress {
+  id?: string;
+  address1?: string;
+  address2?: string;
+  city?: string;
+  province?: string;
+  zip?: string;
+  country?: string;
+  formatted?: string[];
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+}
+
+export interface ShopifyOrderLineItem {
+  title: string;
+  quantity: number;
+  variant?: {
+    id: string;
+    title: string;
+    image?: ShopifyImage | null;
+    price: ShopifyPrice;
+  } | null;
+}
+
+export interface ShopifyOrder {
+  id: string;
+  name: string;
+  orderNumber: number;
+  processedAt: string;
+  financialStatus?: string;
+  fulfillmentStatus?: string;
+  totalPrice: ShopifyPrice;
+  successfulFulfillments?: Array<{
+    trackingCompany?: string;
+    trackingInfo?: Array<{
+      number?: string;
+      url?: string;
+    }>;
+  }>;
+  lineItems: {
+    edges: Array<{
+      node: ShopifyOrderLineItem;
+    }>;
+  };
+}
+
+export interface ShopifyCustomer {
+  id: string;
+  firstName?: string;
+  lastName?: string;
+  displayName: string;
+  email: string;
+  phone?: string | null;
+  defaultAddress?: ShopifyAddress | null;
+  addresses?: {
+    edges: Array<{
+      node: ShopifyAddress;
+    }>;
+  };
+  orders?: {
+    edges: Array<{
+      node: ShopifyOrder;
+    }>;
+  };
+}
+
+export interface ShopifyCustomerAccessToken {
+  accessToken: string;
+  expiresAt: string;
+}
+
+export interface CartBuyerIdentityInput {
+  customerAccessToken?: string;
+  email?: string;
+  phone?: string;
+  countryCode?: string;
+  companyLocationId?: string;
+}
+
+export interface CartBuyerIdentity {
+  email?: string | null;
+  phone?: string | null;
+  countryCode?: string | null;
+  customer?: {
+    id: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    displayName?: string;
+  } | null;
+}
+

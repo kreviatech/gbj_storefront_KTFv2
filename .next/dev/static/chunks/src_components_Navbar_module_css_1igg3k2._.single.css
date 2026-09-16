@@ -351,6 +351,54 @@
   background: #c5a059;
 }
 
+.Navbar-module__cJzEcG__accountSignOutBtn {
+  color: #dc2626;
+  cursor: pointer;
+  background: #ef444414;
+  border: 1px solid #ef444433;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 6px;
+  padding: 8px 0;
+  font-size: .84rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.Navbar-module__cJzEcG__accountSignOutBtn:hover {
+  color: #b91c1c;
+  background: #ef444426;
+}
+
+.Navbar-module__cJzEcG__dropdownEmail {
+  color: #78716c;
+  word-break: break-all;
+  font-size: .74rem !important;
+}
+
+.Navbar-module__cJzEcG__dropdownRole {
+  margin-top: 2px;
+  font-weight: 600;
+  color: #b8860b !important;
+  font-size: .72rem !important;
+}
+
+.Navbar-module__cJzEcG__authStatusDot {
+  background: #c5a059;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.Navbar-module__cJzEcG__userLoggedIn {
+  color: #b8860b;
+  position: relative;
+}
+
 .Navbar-module__cJzEcG__drawerOverlay {
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);

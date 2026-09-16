@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import { createShopifyCheckout } from "@/lib/shopify";
 import styles from "./CartDrawer.module.css";
 
 export default function CartDrawer() {
   const { cart, isOpen, closeCart, removeFromCart, updateQuantity, cartTotal, cartCount } =
     useCart();
+  const { customer, customerAccessToken } = useAuth();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
@@ -23,7 +26,15 @@ export default function CartDrawer() {
         product: item.product,
       }));
 
-      const res = await createShopifyCheckout(checkoutItems);
+      // Pass buyer identity (customerAccessToken + email) to Shopify Cart
+      const buyerIdentity = customerAccessToken
+        ? {
+            customerAccessToken,
+            email: customer?.email,
+          }
+        : undefined;
+
+      const res = await createShopifyCheckout(checkoutItems, buyerIdentity);
       if (res.checkoutUrl) {
         window.location.href = res.checkoutUrl;
       } else {
@@ -133,6 +144,33 @@ export default function CartDrawer() {
                 INR {cartTotal.toLocaleString()}
               </span>
             </div>
+
+            {/* Buyer Identity Recognition status */}
+            {customer ? (
+              <div className={styles.authBadge}>
+                <span className={styles.authBadgeIcon}>👑</span>
+                <div className={styles.authBadgeInfo}>
+                  <span className={styles.authBadgeTitle}>
+                    VIP Member: {customer.displayName || customer.email}
+                  </span>
+                  <span className={styles.authBadgeDesc}>
+                    Authenticated checkout active. Saved addresses & orders are linked automatically.
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.guestPrompt}>
+                <span>Have a Gold Bank account?</span>
+                <Link
+                  href="/account"
+                  onClick={closeCart}
+                  className={styles.guestSignInLink}
+                >
+                  Sign in for saved addresses →
+                </Link>
+              </div>
+            )}
+
             <p className={styles.shippingNotice}>
               Taxes and insured courier shipping calculated at checkout.
             </p>
@@ -144,7 +182,11 @@ export default function CartDrawer() {
               onClick={handleCheckout}
               disabled={isCheckingOut}
             >
-              {isCheckingOut ? "Securing Your Order..." : "Proceed to Secure Checkout"}
+              {isCheckingOut
+                ? "Securing Your Order..."
+                : customer
+                ? "Proceed to Authenticated Checkout"
+                : "Proceed to Secure Checkout"}
             </button>
             <button className={styles.continueBtn} onClick={closeCart}>
               Continue Browsing
